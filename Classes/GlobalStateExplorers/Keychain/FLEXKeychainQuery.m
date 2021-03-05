@@ -150,13 +150,19 @@
 #pragma mark - Accessors
 
 - (void)setPasswordObject:(id<NSCoding>)object {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     self.passwordData = [NSKeyedArchiver archivedDataWithRootObject:object];
+#pragma clang diagnostic pop
 }
 
 
 - (id<NSCoding>)passwordObject {
     if (self.passwordData.length) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         return [NSKeyedUnarchiver unarchiveObjectWithData:self.passwordData];
+#pragma clang diagnostic pop
     }
     
     return nil;

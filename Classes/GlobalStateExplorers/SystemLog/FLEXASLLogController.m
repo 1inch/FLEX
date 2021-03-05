@@ -34,6 +34,8 @@
 
 @end
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 @implementation FLEXASLLogController
 
 + (instancetype)withUpdateHandler:(void(^)(NSArray<FLEXSystemLogMessage *> *newMessages))newMessagesHandler {
@@ -145,3 +147,4 @@
 }
 
 @end
+#pragma clang diagnostic pop

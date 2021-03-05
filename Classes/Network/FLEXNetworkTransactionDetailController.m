@@ -196,6 +196,8 @@ typedef UIViewController *(^FLEXNetworkDetailRowSelectionFuture)(void);
 
 #pragma mark - Cell Copying
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
 - (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
@@ -210,6 +212,7 @@ typedef UIViewController *(^FLEXNetworkDetailRowSelectionFuture)(void);
         UIPasteboard.generalPasteboard.string = row.detailText;
     }
 }
+#pragma clang diagnostic pop
 
 #if FLEX_AT_LEAST_IOS13_SDK
 

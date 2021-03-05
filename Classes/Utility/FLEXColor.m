@@ -93,7 +93,10 @@
     if (@available(iOS 13.0, *)) {
         return UIColor.systemBlueColor;
     } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         return UIApplication.sharedApplication.keyWindow.tintColor;
+#pragma clang diagnostic pop
     }
     #else
     return UIApplication.sharedApplication.keyWindow.tintColor;
