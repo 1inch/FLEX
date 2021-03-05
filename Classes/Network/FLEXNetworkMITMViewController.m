@@ -375,6 +375,8 @@
 
 #pragma mark - Menu Actions
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
 - (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
@@ -389,6 +391,7 @@
         UIPasteboard.generalPasteboard.string = request.URL.absoluteString ?: @"";
     }
 }
+#pragma clang diagnostic pop
 
 #if FLEX_AT_LEAST_IOS13_SDK
 

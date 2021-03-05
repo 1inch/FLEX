@@ -268,8 +268,11 @@ typedef NS_ENUM(NSUInteger, FLEXFileBrowserSortAttribute) {
             
             id object = nil;
             @try {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
                 // Try to decode an archived object regardless of file extension
                 object = [NSKeyedUnarchiver unarchiveObjectWithData:fileData];
+#pragma clang diagnostic pop
             } @catch (NSException *e) { }
             
             // Try to decode other things instead
@@ -332,6 +335,8 @@ typedef NS_ENUM(NSUInteger, FLEXFileBrowserSortAttribute) {
     }
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
 - (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath {
     UIMenuItem *rename = [[UIMenuItem alloc] initWithTitle:@"Rename" action:@selector(fileBrowserRename:)];
     UIMenuItem *delete = [[UIMenuItem alloc] initWithTitle:@"Delete" action:@selector(fileBrowserDelete:)];
@@ -355,6 +360,7 @@ typedef NS_ENUM(NSUInteger, FLEXFileBrowserSortAttribute) {
     // The table view only calls this method for actions in the UIResponderStandardEditActions informal protocol.
     // Since our actions are outside of that protocol, we need to manually handle the action forwarding from the cells.
 }
+#pragma clang diagnostic pop
 
 #if FLEX_AT_LEAST_IOS13_SDK
 

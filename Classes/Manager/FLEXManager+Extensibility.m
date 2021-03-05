@@ -237,7 +237,10 @@
 }
 
 - (UIViewController *)topViewController {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     return [FLEXUtility topViewControllerInWindow:UIApplication.sharedApplication.keyWindow];
+#pragma clang diagnostic pop
 }
 
 - (void)toggleTopViewControllerOfClass:(Class)class {

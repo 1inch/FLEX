@@ -99,7 +99,10 @@ CGFloat const kFLEXDebounceForExpensiveIO = 0.5;
         self.searchController.searchBar.placeholder = @"Filter";
         self.searchController.searchResultsUpdater = (id)self;
         self.searchController.delegate = (id)self;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         self.searchController.dimsBackgroundDuringPresentation = NO;
+#pragma clang diagnostic pop
         self.searchController.hidesNavigationBarDuringPresentation = NO;
         /// Not necessary in iOS 13; remove this when iOS 13 is the minimum deployment target
         self.searchController.searchBar.delegate = self;

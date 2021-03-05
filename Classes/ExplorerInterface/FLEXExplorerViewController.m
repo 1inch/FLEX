@@ -716,6 +716,8 @@ typedef NS_ENUM(NSUInteger, FLEXExplorerMode) {
     return views;
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (UIView *)viewForSelectionAtPoint:(CGPoint)tapPointInWindow {
     // Select in the window that would handle the touch, but don't just use the result of
     // hitTest:withEvent: so we can still select views with interaction disabled.
@@ -734,6 +736,7 @@ typedef NS_ENUM(NSUInteger, FLEXExplorerMode) {
     // Select the deepest visible view at the tap point. This generally corresponds to what the user wants to select.
     return [self recursiveSubviewsAtPoint:tapPointInWindow inView:windowForSelection skipHiddenViews:YES].lastObject;
 }
+#pragma clang diagnostic pop
 
 - (NSArray<UIView *> *)recursiveSubviewsAtPoint:(CGPoint)pointInView
                                          inView:(UIView *)view

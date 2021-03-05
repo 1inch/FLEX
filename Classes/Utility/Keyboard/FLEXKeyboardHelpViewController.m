@@ -15,6 +15,8 @@
 
 @end
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 @implementation FLEXKeyboardHelpViewController
 
 - (void)viewDidLoad {
@@ -40,3 +42,4 @@
 }
 
 @end
+#pragma clang diagnostic pop

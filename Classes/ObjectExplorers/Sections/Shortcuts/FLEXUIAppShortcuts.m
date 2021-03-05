@@ -66,7 +66,10 @@
                 }
             }];
         } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
             [app openURL:url];
+#pragma clang diagnostic pop
         }
     } else {
         [FLEXAlert showAlert:@"Error" message:@"Invalid URL" from:host];

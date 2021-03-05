@@ -360,6 +360,8 @@
     return UITableViewAutomaticDimension;
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
 - (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath {
     return self.filterDelegate.sections[indexPath.section] == self.descriptionSection;
 }
@@ -378,5 +380,6 @@
         UIPasteboard.generalPasteboard.string = self.explorer.objectDescription;
     }
 }
+#pragma clang diagnostic pop
 
 @end

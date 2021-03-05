@@ -36,7 +36,10 @@ BOOL FLEXConstructorsShouldRun() {
 
 + (UIWindow *)appKeyWindow {
     // First, check UIApplication.keyWindow
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     FLEXWindow *window = (id)UIApplication.sharedApplication.keyWindow;
+#pragma clang diagnostic pop
     if (window) {
         if ([window isKindOfClass:[FLEXWindow class]]) {
             return window.previousKeyWindow;

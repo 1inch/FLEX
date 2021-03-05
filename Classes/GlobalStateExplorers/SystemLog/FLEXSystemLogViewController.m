@@ -250,7 +250,8 @@ static BOOL my_os_log_shim_enabled(void *addr) {
 
 
 #pragma mark - Copy on long press
-
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
 - (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
@@ -265,6 +266,7 @@ static BOOL my_os_log_shim_enabled(void *addr) {
         UIPasteboard.generalPasteboard.string = self.logMessages.filteredList[indexPath.row].messageText ?: @"";
     }
 }
+#pragma clang diagnostic pop
 
 #if FLEX_AT_LEAST_IOS13_SDK
 
