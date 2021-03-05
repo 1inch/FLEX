@@ -21,6 +21,8 @@
 @property (nonatomic, copy) NSArray<NSArray *> *sections;
 @end
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 @implementation FLEXWindowManagerController
 
 #pragma mark - Initialization
@@ -300,3 +302,4 @@
 }
 
 @end
+#pragma clang diagnostic pop

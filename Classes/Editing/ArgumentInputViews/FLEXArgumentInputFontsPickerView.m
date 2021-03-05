@@ -46,7 +46,10 @@
     UIPickerView *fontsPicker = [UIPickerView new];
     fontsPicker.dataSource = self;
     fontsPicker.delegate = self;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     fontsPicker.showsSelectionIndicator = YES;
+#pragma clang diagnostic pop
     return fontsPicker;
 }
 
