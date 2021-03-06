@@ -65,6 +65,7 @@
             return [FLEXLiveObjectsController flex_concreteGlobalsEntry:row];
         case FLEXGlobalsRowCookies:
             return [FLEXCookiesViewController flex_concreteGlobalsEntry:row];
+        case FLEXGlobalsRowBrowseAppGroup:
         case FLEXGlobalsRowBrowseBundle:
         case FLEXGlobalsRowBrowseContainer:
             return [FLEXFileBrowserController flex_concreteGlobalsEntry:row];
@@ -117,6 +118,7 @@
                 [self globalsEntryForRow:FLEXGlobalsRowBrowseRuntime],
             ],
             @(FLEXGlobalsSectionAppShortcuts) : @[
+                [self globalsEntryForRow:FLEXGlobalsRowBrowseAppGroup],
                 [self globalsEntryForRow:FLEXGlobalsRowBrowseBundle],
                 [self globalsEntryForRow:FLEXGlobalsRowBrowseContainer],
                 [self globalsEntryForRow:FLEXGlobalsRowMainBundle],

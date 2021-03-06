@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) BOOL isHidden;
 @property (nonatomic, readonly) FLEXExplorerToolbar *toolbar;
+@property (nonatomic, copy) NSString *appGroup;
 
 - (void)showExplorer;
 - (void)hideExplorer;
