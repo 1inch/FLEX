@@ -13,6 +13,7 @@
 #import "FLEXTableListViewController.h"
 #import "FLEXObjectExplorerFactory.h"
 #import "FLEXObjectExplorerViewController.h"
+#import "FLEXManager.h"
 #import <mach-o/loader.h>
 
 @interface FLEXFileBrowserTableViewCell : UITableViewCell
@@ -128,18 +129,43 @@ typedef NS_ENUM(NSUInteger, FLEXFileBrowserSortAttribute) {
 
 + (NSString *)globalsEntryTitle:(FLEXGlobalsRow)row {
     switch (row) {
-        case FLEXGlobalsRowBrowseBundle: return @"📁  Browse Bundle Directory";
-        case FLEXGlobalsRowBrowseContainer: return @"📁  Browse Container Directory";
-        default: return nil;
+        case FLEXGlobalsRowBrowseBundle:
+            return @"📁  Browse Bundle Directory";
+        case FLEXGlobalsRowBrowseContainer:
+            return @"📁  Browse Container Directory";
+        case FLEXGlobalsRowBrowseAppGroup:
+            return @"🥷🏻  Browse AppGroup Directory";
+        default:
+            return nil;
     }
 }
 
 + (UIViewController *)globalsEntryViewController:(FLEXGlobalsRow)row {
+    NSString *appGroupPath = [self appGroupPath];
     switch (row) {
-        case FLEXGlobalsRowBrowseBundle: return [[self alloc] initWithPath:NSBundle.mainBundle.bundlePath];
-        case FLEXGlobalsRowBrowseContainer: return [[self alloc] initWithPath:NSHomeDirectory()];
-        default: return [self new];
+        case FLEXGlobalsRowBrowseBundle:
+            return [[self alloc] initWithPath: NSBundle.mainBundle.bundlePath];
+        case FLEXGlobalsRowBrowseContainer:
+            return [[self alloc] initWithPath: NSHomeDirectory()];
+        case FLEXGlobalsRowBrowseAppGroup:
+            if (appGroupPath != nil) {
+                return [[self alloc] initWithPath: [self appGroupPath]];
+            } else {
+                return [self new];
+            }
+        default:
+            return [self new];
     }
+}
+
++ (NSString *)appGroupPath {
+    NSString *appGroup = [[FLEXManager sharedManager] appGroup];
+    NSString* appGroupPath = nil;
+    if (appGroup != nil) {
+        NSURL *appGroupURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier: appGroup];
+        appGroupPath = [appGroupURL relativePath];
+    }
+    return appGroupPath;
 }
 
 #pragma mark - FLEXFileBrowserSearchOperationDelegate
